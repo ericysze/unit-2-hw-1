@@ -1,0 +1,19 @@
+//
+//  venueInfo.h
+//  TalkinToTheNet
+//
+//  Created by Eric Sze on 9/25/15.
+//  Copyright © 2015 Mike Kavouras. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface venueInfo : NSObject
+
+@property (nonatomic) NSString *name;
+@property (nonatomic) NSString *formattedPhone;
+@property (nonatomic) NSString *address;
+
+- (instancetype)initWithJSON:(NSDictionary *)json;
+
+@end
