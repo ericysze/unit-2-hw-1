@@ -12,14 +12,14 @@
 #import "FoursquareInfoTableViewCell.h"
 
 @interface FoursquareTVC ()
+<
+UITableViewDataSource,
+UITableViewDelegate,
+UITextFieldDelegate
+>
 
-@property (nonatomic) NSArray *foursquareData;
-@property (nonatomic) NSDictionary *names;
-
+@property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) NSMutableArray *searchResults;
-@property (nonatomic) NSDictionary *response;
-@property (nonatomic) NSArray *venues;
-
 
 @end
 
@@ -28,14 +28,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self fetchFoursquareData];
+    self.navigationItem.title = @"Foursquare API Requests";
+    
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.searchTextField.delegate = self;
     
 }
 
-- (void)fetchFoursquareData {
+- (void)fetchFoursquareData:(NSString *)searchTerm
+            callbackBlock:(void(^)())block {
+    
+    NSString *urlString = [NSString stringWithFormat:@"https://api.foursquare.com/v2/venues/search?client_id=ERLM1NQGQT3VSJORZQXMWA4UJ1JXLFIKJI3CMI4PCAMYA0WC&client_secret=5GNS1DNYEIEIIRJ3NLVYUWZSKCIELRFIVO2RFWDCQIOG1MLQ&v=20130815&ll=40.7,-74&query=%@", searchTerm];
+    
+    NSString *encodedString = [urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
     // create an instagram url
-    NSURL *instagramURL = [NSURL URLWithString:@"https://api.foursquare.com/v2/venues/search?client_id=ERLM1NQGQT3VSJORZQXMWA4UJ1JXLFIKJI3CMI4PCAMYA0WC&client_secret=5GNS1DNYEIEIIRJ3NLVYUWZSKCIELRFIVO2RFWDCQIOG1MLQ&v=20130815&ll=40.7,-74&query=sushi"];
+    NSURL *instagramURL = [NSURL URLWithString:encodedString];
     
     // fetch data from the instagram endpoint and print json response
     [FoursquareAPIManager GETRequestWithURL:instagramURL completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -55,28 +64,10 @@
             venueInfo *info = [[venueInfo alloc] initWithJSON:result];
             [self.searchResults addObject:info];
             
-            NSLog(@"%@", self.searchResults);
-            
+//            NSLog(@"%@", self.searchResults);
         }
         
-        [self.tableView reloadData];
-        
-        
-        //        // self.response = NSDictionary
-        //        self.response = [json objectForKey:@"response"];
-        //        // self.venues = NSArray
-        //        self.venues = [self.response objectForKey:@"venues"];
-        //        NSDictionary *getName = [self.venues objectAtIndex:0];
-        //
-        //        NSDictionary *getForPhone = [getName objectForKey:@"contact"];
-        //
-        //        NSString *name = [getName objectForKey:@"name"];
-        //        NSString *formattedPhone = [getForPhone objectForKey:@"formattedPhone"];
-        //
-        //        
-        //        
-        //        NSLog(@"%@ %@", name, formattedPhone);
-        
+        block();
     }];
 }
 
@@ -105,6 +96,22 @@
     cell.phoneNumberLabel.text = info.formattedPhone;
     
     return cell;
+}
+
+#pragma mark - text field delegate
+
+// when user taps "return" key on keyboard
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
+    // dismiss the keyboard with message:
+    [self.view endEditing:YES];
+    
+    // make an api request
+    [self fetchFoursquareData:textField.text callbackBlock:^{
+        [self.tableView reloadData];
+    }];
+    
+    return YES;
 }
 
 @end

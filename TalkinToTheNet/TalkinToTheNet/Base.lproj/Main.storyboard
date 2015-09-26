@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="VfI-SG-gOP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="FJg-TW-KkN">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="jay-hw-tKr">
+            <objects>
+                <navigationController id="FJg-TW-KkN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="IrH-a0-72R">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="VfI-SG-gOP" kind="relationship" relationship="rootViewController" id="vWc-x5-yxs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDq-TV-POr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-384" y="230"/>
+        </scene>
         <!--FoursquareTVC-->
         <scene sceneID="P0Q-LJ-G51">
             <objects>
@@ -13,29 +29,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <textField key="tableHeaderView" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="I'm looking for ..." textAlignment="natural" minimumFontSize="17" id="fUI-tm-RaV">
+                            <rect key="frame" x="0.0" y="64" width="600" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FoursquareCellIdentifier" rowHeight="101" id="Tes-bM-88A" customClass="FoursquareInfoTableViewCell">
-                                <rect key="frame" x="0.0" y="28" width="600" height="101"/>
+                                <rect key="frame" x="0.0" y="122" width="600" height="101"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tes-bM-88A" id="4X4-Jq-IZy">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-fw-5dL">
-                                            <rect key="frame" x="20" y="15" width="132.5" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="15" width="155" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuS-RN-EFF">
-                                            <rect key="frame" x="20" y="43" width="63" height="20.5"/>
+                                            <rect key="frame" x="20" y="49" width="63" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-aV-JYj">
-                                            <rect key="frame" x="20" y="71.5" width="115" height="20.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <rect key="frame" x="20" y="74.5" width="96.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -46,7 +68,7 @@
                                         <constraint firstItem="cVy-aV-JYj" firstAttribute="leading" secondItem="4X4-Jq-IZy" secondAttribute="leading" constant="20" id="BQQ-am-r8y"/>
                                         <constraint firstAttribute="bottom" secondItem="cVy-aV-JYj" secondAttribute="bottom" constant="8.5" id="TcR-Bq-mII"/>
                                         <constraint firstItem="dlO-fw-5dL" firstAttribute="top" secondItem="4X4-Jq-IZy" secondAttribute="top" constant="15" id="eZg-1R-Vb4"/>
-                                        <constraint firstItem="iuS-RN-EFF" firstAttribute="top" secondItem="dlO-fw-5dL" secondAttribute="bottom" constant="7.5" id="wRc-bD-0nO"/>
+                                        <constraint firstItem="iuS-RN-EFF" firstAttribute="top" secondItem="dlO-fw-5dL" secondAttribute="bottom" constant="10" id="wRc-bD-0nO"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -61,6 +83,10 @@
                             <outlet property="delegate" destination="VfI-SG-gOP" id="upE-2d-tl8"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="HxX-aq-he5"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="fUI-tm-RaV" id="seO-cO-YE9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KNL-9k-cO9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
