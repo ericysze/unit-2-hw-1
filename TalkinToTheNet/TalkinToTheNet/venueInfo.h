@@ -13,6 +13,7 @@
 @property (nonatomic) NSString *name;
 @property (nonatomic) NSString *formattedPhone;
 @property (nonatomic) NSString *address;
+@property (nonatomic) NSString *twitter;
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 

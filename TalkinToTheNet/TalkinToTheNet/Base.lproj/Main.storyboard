@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -43,21 +44,42 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="100.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restaurant Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-fw-5dL">
-                                            <rect key="frame" x="20" y="15" width="155" height="24"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="dlO-fw-5dL">
+                                            <rect key="frame" x="20" y="15" width="560" height="23.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="570" id="X3X-e0-Akp"/>
+                                            </constraints>
+                                            <attributedString key="attributedText">
+                                                <fragment content="Restaurant Name">
+                                                    <attributes>
+                                                        <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                             <nil key="highlightedColor"/>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="X3X-e0-Akp"/>
+                                                </mask>
+                                            </variation>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuS-RN-EFF">
-                                            <rect key="frame" x="20" y="49" width="63" height="20.5"/>
+                                            <rect key="frame" x="20" y="48.5" width="63" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-aV-JYj">
-                                            <rect key="frame" x="20" y="74.5" width="96.5" height="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-aV-JYj">
+                                            <rect key="frame" x="20" y="74" width="96.5" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W5e-Jf-8KW">
+                                            <rect key="frame" x="514" y="70" width="53" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -66,8 +88,11 @@
                                         <constraint firstItem="iuS-RN-EFF" firstAttribute="leading" secondItem="4X4-Jq-IZy" secondAttribute="leading" constant="20" id="3TC-pt-KhD"/>
                                         <constraint firstItem="dlO-fw-5dL" firstAttribute="leading" secondItem="4X4-Jq-IZy" secondAttribute="leading" constant="20" id="45u-2c-dhQ"/>
                                         <constraint firstItem="cVy-aV-JYj" firstAttribute="leading" secondItem="4X4-Jq-IZy" secondAttribute="leading" constant="20" id="BQQ-am-r8y"/>
+                                        <constraint firstAttribute="trailing" secondItem="W5e-Jf-8KW" secondAttribute="trailing" constant="33" id="DUL-N1-LVz"/>
                                         <constraint firstAttribute="bottom" secondItem="cVy-aV-JYj" secondAttribute="bottom" constant="8.5" id="TcR-Bq-mII"/>
                                         <constraint firstItem="dlO-fw-5dL" firstAttribute="top" secondItem="4X4-Jq-IZy" secondAttribute="top" constant="15" id="eZg-1R-Vb4"/>
+                                        <constraint firstAttribute="trailing" secondItem="dlO-fw-5dL" secondAttribute="trailing" constant="20" id="fgI-Ng-E5X"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="W5e-Jf-8KW" secondAttribute="bottom" constant="1.5" id="fry-Rg-dQ2"/>
                                         <constraint firstItem="iuS-RN-EFF" firstAttribute="top" secondItem="dlO-fw-5dL" secondAttribute="bottom" constant="10" id="wRc-bD-0nO"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -75,6 +100,7 @@
                                     <outlet property="addressLabel" destination="iuS-RN-EFF" id="dDL-Ir-OK5"/>
                                     <outlet property="phoneNumberLabel" destination="cVy-aV-JYj" id="qyp-PE-DvK"/>
                                     <outlet property="restaurantNameLabel" destination="dlO-fw-5dL" id="ocg-ks-aXA"/>
+                                    <outlet property="twitterLabel" destination="W5e-Jf-8KW" id="Za4-nm-BaJ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

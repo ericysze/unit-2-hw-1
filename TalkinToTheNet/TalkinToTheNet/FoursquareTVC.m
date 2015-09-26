@@ -29,7 +29,6 @@ UITextFieldDelegate
     [super viewDidLoad];
     
     self.navigationItem.title = @"Foursquare API Requests";
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.searchTextField.delegate = self;
@@ -94,6 +93,7 @@ UITextFieldDelegate
     cell.restaurantNameLabel.text = info.name;
     cell.addressLabel.text = info.address;
     cell.phoneNumberLabel.text = info.formattedPhone;
+    cell.twitterLabel.text = info.twitter;
     
     return cell;
 }

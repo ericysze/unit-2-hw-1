@@ -16,6 +16,8 @@
         self.name = [json objectForKey:@"name"];
         self.formattedPhone = json[@"contact"][@"formattedPhone"];
         self.address = json[@"location"][@"address"];
+        self.twitter = json[@"contact"][@"twitter"];
+        
         
         return self;
     }
