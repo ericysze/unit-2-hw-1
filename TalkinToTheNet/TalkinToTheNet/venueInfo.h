@@ -14,6 +14,8 @@
 @property (nonatomic) NSString *formattedPhone;
 @property (nonatomic) NSString *address;
 @property (nonatomic) NSString *twitter;
+@property (nonatomic) float latitude;
+@property (nonatomic) float longitude;
 
 - (instancetype)initWithJSON:(NSDictionary *)json;
 

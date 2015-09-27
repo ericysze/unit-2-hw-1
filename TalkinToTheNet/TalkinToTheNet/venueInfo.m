@@ -17,6 +17,8 @@
         self.formattedPhone = json[@"contact"][@"formattedPhone"];
         self.address = json[@"location"][@"address"];
         self.twitter = json[@"contact"][@"twitter"];
+        self.latitude = [json[@"location"][@"lat"] floatValue];
+        self.longitude = [json[@"location"][@"lng"] floatValue];
         
         
         return self;

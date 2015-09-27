@@ -10,6 +10,7 @@
 #import "FoursquareAPIManager.h"
 #import "venueInfo.h"
 #import "FoursquareInfoTableViewCell.h"
+#import "GoogleMapsDetailViewController.h"
 
 @interface FoursquareTVC ()
 <
@@ -20,6 +21,7 @@ UITextFieldDelegate
 
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) NSMutableArray *searchResults;
+@property (nonatomic) venueInfo *myVenue;
 
 @end
 
@@ -54,6 +56,8 @@ UITextFieldDelegate
         
         NSArray *venues = [results objectForKey:@"venues"];
         
+        float lat = [json[@"location"][@"lat"] floatValue];
+        
         // reset my array
         self.searchResults = [[NSMutableArray alloc] init];
         
@@ -63,14 +67,20 @@ UITextFieldDelegate
             venueInfo *info = [[venueInfo alloc] initWithJSON:result];
             [self.searchResults addObject:info];
             
-//            NSLog(@"%@", self.searchResults);
-        }
+            
+            NSLog(@"%f", lat);
+}
         
         block();
     }];
 }
 
-
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    GoogleMapsDetailViewController *viewController = segue.destinationViewController;
+    NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    venueInfo *venue = self.searchResults[indexPath.row];
+    viewController.myVenue = venue;
+}
 
 
 #pragma mark - Table view data source

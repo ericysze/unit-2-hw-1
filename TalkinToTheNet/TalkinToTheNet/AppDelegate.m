@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+@import GoogleMaps;
 
 @interface AppDelegate ()
 
@@ -16,8 +17,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    [GMSServices provideAPIKey:@"AIzaSyBvFPDwKKMsG_Xqbw9JZHc42mhLM13g0GY"];
+    
+    if([CLLocationManager locationServicesEnabled]){
+        self.currentLocation = [[CLLocation alloc] init];
+        self.locationManager = [[CLLocationManager alloc] init];
+        self.locationManager.delegate = self;
+        [self.locationManager startUpdatingLocation];
+    }
+    
     return YES;
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    self.currentLocation = newLocation;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
